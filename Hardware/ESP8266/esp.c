@@ -113,7 +113,7 @@ void ESP_Init(uint8_t *ssid, uint8_t *passwd, uint8_t *remote_IP, uint16_t remot
 /**
  * @brief 通过TCP透传发送数据
  */
-void ESP_SendData(uint8_t* RxData) {
-    HAL_UART_Transmit(&hlpuart1,RxData, strlen(RxData),0xff);
+void ESP_SendData(uint8_t *RxData) {
+    HAL_UART_Transmit(&hlpuart1, RxData, strlen(RxData), 0xff);
 }
 

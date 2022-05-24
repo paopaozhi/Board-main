@@ -88,12 +88,11 @@
   * @note    This function should be called and executed from SRAM memory
   * @retval  HAL status
   */
-__RAM_FUNC HAL_StatusTypeDef HAL_FLASHEx_EnableRunPowerDown(void)
-{
-  /* Enable the Power Down in Run mode*/
-  __HAL_FLASH_POWER_DOWN_ENABLE();
+__RAM_FUNC HAL_StatusTypeDef HAL_FLASHEx_EnableRunPowerDown(void) {
+    /* Enable the Power Down in Run mode*/
+    __HAL_FLASH_POWER_DOWN_ENABLE();
 
-  return HAL_OK;
+    return HAL_OK;
 
 }
 
@@ -102,12 +101,11 @@ __RAM_FUNC HAL_StatusTypeDef HAL_FLASHEx_EnableRunPowerDown(void)
   * @note    This function should be called and executed from SRAM memory
   * @retval  HAL status
   */
-__RAM_FUNC HAL_StatusTypeDef HAL_FLASHEx_DisableRunPowerDown(void)
-{
-  /* Disable the Power Down in Run mode*/
-  __HAL_FLASH_POWER_DOWN_DISABLE();
+__RAM_FUNC HAL_StatusTypeDef HAL_FLASHEx_DisableRunPowerDown(void) {
+    /* Disable the Power Down in Run mode*/
+    __HAL_FLASH_POWER_DOWN_DISABLE();
 
-  return HAL_OK;
+    return HAL_OK;
 }
 
 #if defined (STM32L4P5xx) || defined (STM32L4Q5xx) || defined (STM32L4R5xx) || defined (STM32L4R7xx) || defined (STM32L4R9xx) || defined (STM32L4S5xx) || defined (STM32L4S7xx) || defined (STM32L4S9xx)

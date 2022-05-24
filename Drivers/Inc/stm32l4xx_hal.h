@@ -22,7 +22,7 @@
 #define STM32L4xx_HAL_H
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -44,12 +44,11 @@
 /** @defgroup HAL_TICK_FREQ Tick Frequency
   * @{
   */
-typedef enum
-{
-  HAL_TICK_FREQ_10HZ         = 100U,
-  HAL_TICK_FREQ_100HZ        = 10U,
-  HAL_TICK_FREQ_1KHZ         = 1U,
-  HAL_TICK_FREQ_DEFAULT      = HAL_TICK_FREQ_1KHZ
+typedef enum {
+    HAL_TICK_FREQ_10HZ = 100U,
+    HAL_TICK_FREQ_100HZ = 10U,
+    HAL_TICK_FREQ_1KHZ = 1U,
+    HAL_TICK_FREQ_DEFAULT = HAL_TICK_FREQ_1KHZ
 } HAL_TickFreqTypeDef;
 /**
   * @}
@@ -81,9 +80,9 @@ typedef enum
     defined (STM32L4R5xx) || defined (STM32L4R7xx) || defined (STM32L4R9xx) || defined (STM32L4S5xx) || defined (STM32L4S7xx) || defined (STM32L4S9xx)
 #define SYSCFG_BOOT_FMC                SYSCFG_MEMRMP_MEM_MODE_1
 #endif /* STM32L471xx || STM32L475xx || STM32L476xx || STM32L485xx || STM32L486xx || */
-       /* STM32L496xx || STM32L4A6xx || */
-       /* STM32L4P5xx || STM32L4Q5xx || */
-       /* STM32L4R5xx || STM32L4R7xx || STM32L4R9xx || STM32L4S5xx || STM32L4S7xx || STM32L4S9xx */
+/* STM32L496xx || STM32L4A6xx || */
+/* STM32L4P5xx || STM32L4Q5xx || */
+/* STM32L4R5xx || STM32L4R7xx || STM32L4R9xx || STM32L4S5xx || STM32L4S7xx || STM32L4S9xx */
 
 #define SYSCFG_BOOT_SRAM               (SYSCFG_MEMRMP_MEM_MODE_1 | SYSCFG_MEMRMP_MEM_MODE_0)
 
@@ -407,9 +406,9 @@ typedef enum
 #define __HAL_SYSCFG_REMAPMEMORY_FMC()         MODIFY_REG(SYSCFG->MEMRMP, SYSCFG_MEMRMP_MEM_MODE, SYSCFG_MEMRMP_MEM_MODE_1)
 
 #endif /* STM32L471xx || STM32L475xx || STM32L476xx || STM32L485xx || STM32L486xx || */
-       /* STM32L496xx || STM32L4A6xx || */
-       /* STM32L4P5xx || STM32L4Q5xx || */
-       /* STM32L4R5xx || STM32L4R7xx || STM32L4R9xx || STM32L4S5xx || STM32L4S7xx || STM32L4S9xx */
+/* STM32L496xx || STM32L4A6xx || */
+/* STM32L4P5xx || STM32L4Q5xx || */
+/* STM32L4R5xx || STM32L4R7xx || STM32L4R9xx || STM32L4S5xx || STM32L4S7xx || STM32L4S9xx */
 
 #if defined (STM32L4P5xx) || defined (STM32L4Q5xx) || defined (STM32L4R5xx) || defined (STM32L4R7xx) || defined (STM32L4R9xx) || defined (STM32L4S5xx) || defined (STM32L4S7xx) || defined (STM32L4S9xx)
 
@@ -634,10 +633,14 @@ extern HAL_TickFreqTypeDef uwTickFreq;
 
 /* Initialization and de-initialization functions  ******************************/
 HAL_StatusTypeDef HAL_Init(void);
+
 HAL_StatusTypeDef HAL_DeInit(void);
-void              HAL_MspInit(void);
-void              HAL_MspDeInit(void);
-HAL_StatusTypeDef HAL_InitTick (uint32_t TickPriority);
+
+void HAL_MspInit(void);
+
+void HAL_MspDeInit(void);
+
+HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority);
 
 /**
   * @}
@@ -648,20 +651,33 @@ HAL_StatusTypeDef HAL_InitTick (uint32_t TickPriority);
   */
 
 /* Peripheral Control functions  ************************************************/
-void               HAL_IncTick(void);
-void               HAL_Delay(uint32_t Delay);
-uint32_t           HAL_GetTick(void);
-uint32_t           HAL_GetTickPrio(void);
-HAL_StatusTypeDef  HAL_SetTickFreq(HAL_TickFreqTypeDef Freq);
+void HAL_IncTick(void);
+
+void HAL_Delay(uint32_t Delay);
+
+uint32_t HAL_GetTick(void);
+
+uint32_t HAL_GetTickPrio(void);
+
+HAL_StatusTypeDef HAL_SetTickFreq(HAL_TickFreqTypeDef Freq);
+
 HAL_TickFreqTypeDef HAL_GetTickFreq(void);
-void               HAL_SuspendTick(void);
-void               HAL_ResumeTick(void);
-uint32_t           HAL_GetHalVersion(void);
-uint32_t           HAL_GetREVID(void);
-uint32_t           HAL_GetDEVID(void);
-uint32_t           HAL_GetUIDw0(void);
-uint32_t           HAL_GetUIDw1(void);
-uint32_t           HAL_GetUIDw2(void);
+
+void HAL_SuspendTick(void);
+
+void HAL_ResumeTick(void);
+
+uint32_t HAL_GetHalVersion(void);
+
+uint32_t HAL_GetREVID(void);
+
+uint32_t HAL_GetDEVID(void);
+
+uint32_t HAL_GetUIDw0(void);
+
+uint32_t HAL_GetUIDw1(void);
+
+uint32_t HAL_GetUIDw2(void);
 
 /**
   * @}
@@ -672,12 +688,17 @@ uint32_t           HAL_GetUIDw2(void);
   */
 
 /* DBGMCU Peripheral Control functions  *****************************************/
-void              HAL_DBGMCU_EnableDBGSleepMode(void);
-void              HAL_DBGMCU_DisableDBGSleepMode(void);
-void              HAL_DBGMCU_EnableDBGStopMode(void);
-void              HAL_DBGMCU_DisableDBGStopMode(void);
-void              HAL_DBGMCU_EnableDBGStandbyMode(void);
-void              HAL_DBGMCU_DisableDBGStandbyMode(void);
+void HAL_DBGMCU_EnableDBGSleepMode(void);
+
+void HAL_DBGMCU_DisableDBGSleepMode(void);
+
+void HAL_DBGMCU_EnableDBGStopMode(void);
+
+void HAL_DBGMCU_DisableDBGStopMode(void);
+
+void HAL_DBGMCU_EnableDBGStandbyMode(void);
+
+void HAL_DBGMCU_DisableDBGStandbyMode(void);
 
 /**
   * @}
@@ -688,20 +709,29 @@ void              HAL_DBGMCU_DisableDBGStandbyMode(void);
   */
 
 /* SYSCFG Control functions  ****************************************************/
-void              HAL_SYSCFG_SRAM2Erase(void);
-void              HAL_SYSCFG_EnableMemorySwappingBank(void);
-void              HAL_SYSCFG_DisableMemorySwappingBank(void);
+void HAL_SYSCFG_SRAM2Erase(void);
+
+void HAL_SYSCFG_EnableMemorySwappingBank(void);
+
+void HAL_SYSCFG_DisableMemorySwappingBank(void);
 
 #if defined(VREFBUF)
-void              HAL_SYSCFG_VREFBUF_VoltageScalingConfig(uint32_t VoltageScaling);
-void              HAL_SYSCFG_VREFBUF_HighImpedanceConfig(uint32_t Mode);
-void              HAL_SYSCFG_VREFBUF_TrimmingConfig(uint32_t TrimmingValue);
+
+void HAL_SYSCFG_VREFBUF_VoltageScalingConfig(uint32_t VoltageScaling);
+
+void HAL_SYSCFG_VREFBUF_HighImpedanceConfig(uint32_t Mode);
+
+void HAL_SYSCFG_VREFBUF_TrimmingConfig(uint32_t TrimmingValue);
+
 HAL_StatusTypeDef HAL_SYSCFG_EnableVREFBUF(void);
-void              HAL_SYSCFG_DisableVREFBUF(void);
+
+void HAL_SYSCFG_DisableVREFBUF(void);
+
 #endif /* VREFBUF */
 
-void              HAL_SYSCFG_EnableIOAnalogSwitchBooster(void);
-void              HAL_SYSCFG_DisableIOAnalogSwitchBooster(void);
+void HAL_SYSCFG_EnableIOAnalogSwitchBooster(void);
+
+void HAL_SYSCFG_DisableIOAnalogSwitchBooster(void);
 
 /**
   * @}

@@ -20,7 +20,7 @@
 #define STM32L4xx_HAL_RCC_EX_H
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -44,35 +44,34 @@
 /**
   * @brief  PLLSAI1 Clock structure definition
   */
-typedef struct
-{
+typedef struct {
 
-  uint32_t PLLSAI1Source;    /*!< PLLSAI1Source: PLLSAI1 entry clock source.
+    uint32_t PLLSAI1Source;    /*!< PLLSAI1Source: PLLSAI1 entry clock source.
                                   This parameter must be a value of @ref RCC_PLL_Clock_Source */
 
 #if defined(RCC_PLLSAI1M_DIV_1_16_SUPPORT)
-  uint32_t PLLSAI1M;         /*!< PLLSAI1M: specifies the division factor for PLLSAI1 input clock.
+    uint32_t PLLSAI1M;         /*!< PLLSAI1M: specifies the division factor for PLLSAI1 input clock.
                                   This parameter must be a number between Min_Data = 1 and Max_Data = 16 */
 #else
-  uint32_t PLLSAI1M;         /*!< PLLSAI1M: specifies the division factor for PLLSAI1 input clock.
+    uint32_t PLLSAI1M;         /*!< PLLSAI1M: specifies the division factor for PLLSAI1 input clock.
                                   This parameter must be a number between Min_Data = 1 and Max_Data = 8 */
 #endif
 
-  uint32_t PLLSAI1N;         /*!< PLLSAI1N: specifies the multiplication factor for PLLSAI1 VCO output clock.
+    uint32_t PLLSAI1N;         /*!< PLLSAI1N: specifies the multiplication factor for PLLSAI1 VCO output clock.
                                   This parameter must be a number between 8 and 86 or 127 depending on devices. */
 
-  uint32_t PLLSAI1P;         /*!< PLLSAI1P: specifies the division factor for SAI clock.
+    uint32_t PLLSAI1P;         /*!< PLLSAI1P: specifies the division factor for SAI clock.
                                   This parameter must be a value of @ref RCC_PLLP_Clock_Divider */
 
-  uint32_t PLLSAI1Q;         /*!< PLLSAI1Q: specifies the division factor for USB/RNG/SDMMC1 clock.
+    uint32_t PLLSAI1Q;         /*!< PLLSAI1Q: specifies the division factor for USB/RNG/SDMMC1 clock.
                                   This parameter must be a value of @ref RCC_PLLQ_Clock_Divider */
 
-  uint32_t PLLSAI1R;         /*!< PLLSAI1R: specifies the division factor for ADC clock.
+    uint32_t PLLSAI1R;         /*!< PLLSAI1R: specifies the division factor for ADC clock.
                                   This parameter must be a value of @ref RCC_PLLR_Clock_Divider */
 
-  uint32_t PLLSAI1ClockOut;  /*!< PLLSAIClockOut: specifies PLLSAI1 output clock to be enabled.
+    uint32_t PLLSAI1ClockOut;  /*!< PLLSAIClockOut: specifies PLLSAI1 output clock to be enabled.
                                   This parameter must be a value of @ref RCC_PLLSAI1_Clock_Output */
-}RCC_PLLSAI1InitTypeDef;
+} RCC_PLLSAI1InitTypeDef;
 #endif /* RCC_PLLSAI1_SUPPORT */
 
 #if defined(RCC_PLLSAI2_SUPPORT)
@@ -116,126 +115,125 @@ typedef struct
 /**
   * @brief  RCC extended clocks structure definition
   */
-typedef struct
-{
-  uint32_t PeriphClockSelection;   /*!< The Extended Clock to be configured.
+typedef struct {
+    uint32_t PeriphClockSelection;   /*!< The Extended Clock to be configured.
                                         This parameter can be a value of @ref RCCEx_Periph_Clock_Selection */
 #if defined(RCC_PLLSAI1_SUPPORT)
 
-  RCC_PLLSAI1InitTypeDef PLLSAI1;  /*!< PLLSAI1 structure parameters.
+    RCC_PLLSAI1InitTypeDef PLLSAI1;  /*!< PLLSAI1 structure parameters.
                                         This parameter will be used only when PLLSAI1 is selected as Clock Source for SAI1, USB/RNG/SDMMC1 or ADC */
 #endif /* RCC_PLLSAI1_SUPPORT */
 #if defined(RCC_PLLSAI2_SUPPORT)
 
-  RCC_PLLSAI2InitTypeDef PLLSAI2;  /*!< PLLSAI2 structure parameters.
+    RCC_PLLSAI2InitTypeDef PLLSAI2;  /*!< PLLSAI2 structure parameters.
                                         This parameter will be used only when PLLSAI2 is selected as Clock Source for SAI2 or ADC */
 
 #endif /* RCC_PLLSAI2_SUPPORT */
 
-  uint32_t Usart1ClockSelection;   /*!< Specifies USART1 clock source.
+    uint32_t Usart1ClockSelection;   /*!< Specifies USART1 clock source.
                                         This parameter can be a value of @ref RCCEx_USART1_Clock_Source */
 
-  uint32_t Usart2ClockSelection;   /*!< Specifies USART2 clock source.
+    uint32_t Usart2ClockSelection;   /*!< Specifies USART2 clock source.
                                         This parameter can be a value of @ref RCCEx_USART2_Clock_Source */
 
 #if defined(USART3)
 
-  uint32_t Usart3ClockSelection;   /*!< Specifies USART3 clock source.
+    uint32_t Usart3ClockSelection;   /*!< Specifies USART3 clock source.
                                         This parameter can be a value of @ref RCCEx_USART3_Clock_Source */
 
 #endif /* USART3 */
 
 #if defined(UART4)
 
-  uint32_t Uart4ClockSelection;    /*!< Specifies UART4 clock source.
+    uint32_t Uart4ClockSelection;    /*!< Specifies UART4 clock source.
                                         This parameter can be a value of @ref RCCEx_UART4_Clock_Source */
 
 #endif /* UART4 */
 
 #if defined(UART5)
 
-  uint32_t Uart5ClockSelection;    /*!< Specifies UART5 clock source.
+    uint32_t Uart5ClockSelection;    /*!< Specifies UART5 clock source.
                                         This parameter can be a value of @ref RCCEx_UART5_Clock_Source */
 
 #endif /* UART5 */
 
-  uint32_t Lpuart1ClockSelection;  /*!< Specifies LPUART1 clock source.
+    uint32_t Lpuart1ClockSelection;  /*!< Specifies LPUART1 clock source.
                                         This parameter can be a value of @ref RCCEx_LPUART1_Clock_Source */
 
-  uint32_t I2c1ClockSelection;     /*!< Specifies I2C1 clock source.
+    uint32_t I2c1ClockSelection;     /*!< Specifies I2C1 clock source.
                                         This parameter can be a value of @ref RCCEx_I2C1_Clock_Source */
 
 #if defined(I2C2)
 
-  uint32_t I2c2ClockSelection;     /*!< Specifies I2C2 clock source.
+    uint32_t I2c2ClockSelection;     /*!< Specifies I2C2 clock source.
                                         This parameter can be a value of @ref RCCEx_I2C2_Clock_Source */
 
 #endif /* I2C2 */
 
-  uint32_t I2c3ClockSelection;     /*!< Specifies I2C3 clock source.
+    uint32_t I2c3ClockSelection;     /*!< Specifies I2C3 clock source.
                                         This parameter can be a value of @ref RCCEx_I2C3_Clock_Source */
 
 #if defined(I2C4)
 
-  uint32_t I2c4ClockSelection;     /*!< Specifies I2C4 clock source.
+    uint32_t I2c4ClockSelection;     /*!< Specifies I2C4 clock source.
                                         This parameter can be a value of @ref RCCEx_I2C4_Clock_Source */
 
 #endif /* I2C4 */
 
-  uint32_t Lptim1ClockSelection;   /*!< Specifies LPTIM1 clock source.
+    uint32_t Lptim1ClockSelection;   /*!< Specifies LPTIM1 clock source.
                                         This parameter can be a value of @ref RCCEx_LPTIM1_Clock_Source */
 
-  uint32_t Lptim2ClockSelection;   /*!< Specifies LPTIM2 clock source.
+    uint32_t Lptim2ClockSelection;   /*!< Specifies LPTIM2 clock source.
                                         This parameter can be a value of @ref RCCEx_LPTIM2_Clock_Source */
 #if defined(SAI1)
 
-  uint32_t Sai1ClockSelection;     /*!< Specifies SAI1 clock source.
+    uint32_t Sai1ClockSelection;     /*!< Specifies SAI1 clock source.
                                         This parameter can be a value of @ref RCCEx_SAI1_Clock_Source */
 #endif /* SAI1 */
 
 #if defined(SAI2)
 
-  uint32_t Sai2ClockSelection;     /*!< Specifies SAI2 clock source.
+    uint32_t Sai2ClockSelection;     /*!< Specifies SAI2 clock source.
                                         This parameter can be a value of @ref RCCEx_SAI2_Clock_Source */
 
 #endif /* SAI2 */
 
 #if defined(USB_OTG_FS) || defined(USB)
 
-  uint32_t UsbClockSelection;      /*!< Specifies USB clock source (warning: same source for SDMMC1 and RNG).
+    uint32_t UsbClockSelection;      /*!< Specifies USB clock source (warning: same source for SDMMC1 and RNG).
                                         This parameter can be a value of @ref RCCEx_USB_Clock_Source */
 
 #endif /* USB_OTG_FS || USB */
 
 #if defined(SDMMC1)
 
-  uint32_t Sdmmc1ClockSelection;   /*!< Specifies SDMMC1 clock source (warning: same source for USB and RNG).
+    uint32_t Sdmmc1ClockSelection;   /*!< Specifies SDMMC1 clock source (warning: same source for USB and RNG).
                                         This parameter can be a value of @ref RCCEx_SDMMC1_Clock_Source */
 
 #endif /* SDMMC1 */
 
-  uint32_t RngClockSelection;      /*!< Specifies RNG clock source (warning: same source for USB and SDMMC1).
+    uint32_t RngClockSelection;      /*!< Specifies RNG clock source (warning: same source for USB and SDMMC1).
                                         This parameter can be a value of @ref RCCEx_RNG_Clock_Source */
 
 #if !defined(STM32L412xx) && !defined(STM32L422xx)
-  uint32_t AdcClockSelection;      /*!< Specifies ADC interface clock source.
+    uint32_t AdcClockSelection;      /*!< Specifies ADC interface clock source.
                                         This parameter can be a value of @ref RCCEx_ADC_Clock_Source */
 #endif /* !STM32L412xx && !STM32L422xx */
 
 #if defined(SWPMI1)
 
-  uint32_t Swpmi1ClockSelection;   /*!< Specifies SWPMI1 clock source.
+    uint32_t Swpmi1ClockSelection;   /*!< Specifies SWPMI1 clock source.
                                         This parameter can be a value of @ref RCCEx_SWPMI1_Clock_Source */
 
 #endif /* SWPMI1 */
 
 #if defined(DFSDM1_Filter0)
 
-  uint32_t Dfsdm1ClockSelection;   /*!< Specifies DFSDM1 clock source.
+    uint32_t Dfsdm1ClockSelection;   /*!< Specifies DFSDM1 clock source.
                                         This parameter can be a value of @ref RCCEx_DFSDM1_Clock_Source */
 
 #if defined(STM32L4P5xx) || defined(STM32L4Q5xx) || defined(STM32L4R5xx) || defined(STM32L4R7xx) || defined(STM32L4R9xx) || defined(STM32L4S5xx) || defined(STM32L4S7xx) || defined(STM32L4S9xx)
-  uint32_t Dfsdm1AudioClockSelection; /*!< Specifies DFSDM1 audio clock source.
+    uint32_t Dfsdm1AudioClockSelection; /*!< Specifies DFSDM1 audio clock source.
                                         This parameter can be a value of @ref RCCEx_DFSDM1_Audio_Clock_Source */
 
 #endif /* STM32L4P5xx || STM32L4Q5xx || STM32L4R5xx || STM32L4R7xx || STM32L4R9xx || STM32L4S5xx || STM32L4S7xx || STM32L4S9xx */
@@ -244,79 +242,77 @@ typedef struct
 
 #if defined(LTDC)
 
-  uint32_t LtdcClockSelection;     /*!< Specifies LTDC clock source.
+    uint32_t LtdcClockSelection;     /*!< Specifies LTDC clock source.
                                         This parameter can be a value of @ref RCCEx_LTDC_Clock_Source */
 
 #endif /* LTDC */
 
 #if defined(DSI)
 
-  uint32_t DsiClockSelection;      /*!< Specifies DSI clock source.
+    uint32_t DsiClockSelection;      /*!< Specifies DSI clock source.
                                         This parameter can be a value of @ref RCCEx_DSI_Clock_Source */
 
 #endif /* DSI */
 
 #if defined(OCTOSPI1) || defined(OCTOSPI2)
 
-  uint32_t OspiClockSelection;     /*!< Specifies OctoSPI clock source.
+    uint32_t OspiClockSelection;     /*!< Specifies OctoSPI clock source.
                                         This parameter can be a value of @ref RCCEx_OSPI_Clock_Source */
 
 #endif
 
-  uint32_t RTCClockSelection;      /*!< Specifies RTC clock source.
+    uint32_t RTCClockSelection;      /*!< Specifies RTC clock source.
                                         This parameter can be a value of @ref RCC_RTC_Clock_Source */
-}RCC_PeriphCLKInitTypeDef;
+} RCC_PeriphCLKInitTypeDef;
 
 #if defined(CRS)
 
 /**
   * @brief RCC_CRS Init structure definition
   */
-typedef struct
-{
-  uint32_t Prescaler;             /*!< Specifies the division factor of the SYNC signal.
+typedef struct {
+    uint32_t Prescaler;             /*!< Specifies the division factor of the SYNC signal.
                                      This parameter can be a value of @ref RCCEx_CRS_SynchroDivider */
 
-  uint32_t Source;                /*!< Specifies the SYNC signal source.
+    uint32_t Source;                /*!< Specifies the SYNC signal source.
                                      This parameter can be a value of @ref RCCEx_CRS_SynchroSource */
 
-  uint32_t Polarity;              /*!< Specifies the input polarity for the SYNC signal source.
+    uint32_t Polarity;              /*!< Specifies the input polarity for the SYNC signal source.
                                      This parameter can be a value of @ref RCCEx_CRS_SynchroPolarity */
 
-  uint32_t ReloadValue;           /*!< Specifies the value to be loaded in the frequency error counter with each SYNC event.
+    uint32_t ReloadValue;           /*!< Specifies the value to be loaded in the frequency error counter with each SYNC event.
                                       It can be calculated in using macro __HAL_RCC_CRS_RELOADVALUE_CALCULATE(__FTARGET__, __FSYNC__)
                                      This parameter must be a number between 0 and 0xFFFF or a value of @ref RCCEx_CRS_ReloadValueDefault .*/
 
-  uint32_t ErrorLimitValue;       /*!< Specifies the value to be used to evaluate the captured frequency error value.
+    uint32_t ErrorLimitValue;       /*!< Specifies the value to be used to evaluate the captured frequency error value.
                                      This parameter must be a number between 0 and 0xFF or a value of @ref RCCEx_CRS_ErrorLimitDefault */
 
-  uint32_t HSI48CalibrationValue; /*!< Specifies a user-programmable trimming value to the HSI48 oscillator.
+    uint32_t HSI48CalibrationValue; /*!< Specifies a user-programmable trimming value to the HSI48 oscillator.
                                      This parameter must be a number between 0 and 0x7F for STM32L412xx/L422xx, between 0 and 0x3F otherwise,
                                      or a value of @ref RCCEx_CRS_HSI48CalibrationDefault */
 
-}RCC_CRSInitTypeDef;
+} RCC_CRSInitTypeDef;
 
 /**
   * @brief RCC_CRS Synchronization structure definition
   */
-typedef struct
-{
-  uint32_t ReloadValue;           /*!< Specifies the value loaded in the Counter reload value.
+typedef struct {
+    uint32_t ReloadValue;           /*!< Specifies the value loaded in the Counter reload value.
                                      This parameter must be a number between 0 and 0xFFFF */
 
-  uint32_t HSI48CalibrationValue; /*!< Specifies value loaded in HSI48 oscillator smooth trimming.
+    uint32_t HSI48CalibrationValue; /*!< Specifies value loaded in HSI48 oscillator smooth trimming.
                                      This parameter must be a number between 0 and 0x7F for STM32L412xx/L422xx, between 0 and 0x3F otherwise */
 
-  uint32_t FreqErrorCapture;      /*!< Specifies the value loaded in the .FECAP, the frequency error counter
+    uint32_t FreqErrorCapture;      /*!< Specifies the value loaded in the .FECAP, the frequency error counter
                                                                     value latched in the time of the last SYNC event.
                                     This parameter must be a number between 0 and 0xFFFF */
 
-  uint32_t FreqErrorDirection;    /*!< Specifies the value loaded in the .FEDIR, the counting direction of the
+    uint32_t FreqErrorDirection;    /*!< Specifies the value loaded in the .FEDIR, the counting direction of the
                                                                     frequency error counter latched in the time of the last SYNC event.
                                                                     It shows whether the actual frequency is below or above the target.
                                     This parameter must be a value of @ref RCCEx_CRS_FreqErrorDirection*/
 
-}RCC_CRSSynchroInfoTypeDef;
+} RCC_CRSSynchroInfoTypeDef;
 
 #endif /* CRS */
 /**
@@ -812,8 +808,8 @@ typedef struct
   */
 #if defined(STM32L412xx) || defined(STM32L422xx)
 #define RCC_CRS_HSI48CALIBRATION_DEFAULT 0x00000040U /*!< The default value is 64, which corresponds to the middle of the trimming interval.
-                                                          The trimming step is specified in the product datasheet. A higher TRIM value
-                                                          corresponds to a higher output frequency */
+The trimming step is specified in the product datasheet. A higher TRIM value
+corresponds to a higher output frequency */
 #else
 #define RCC_CRS_HSI48CALIBRATION_DEFAULT 0x00000020U /*!< The default value is 32, which corresponds to the middle of the trimming interval.
                                                           The trimming step is specified in the product datasheet. A higher TRIM value
@@ -2421,9 +2417,11 @@ typedef struct
   * @{
   */
 
-HAL_StatusTypeDef HAL_RCCEx_PeriphCLKConfig(RCC_PeriphCLKInitTypeDef  *PeriphClkInit);
-void              HAL_RCCEx_GetPeriphCLKConfig(RCC_PeriphCLKInitTypeDef  *PeriphClkInit);
-uint32_t          HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk);
+HAL_StatusTypeDef HAL_RCCEx_PeriphCLKConfig(RCC_PeriphCLKInitTypeDef *PeriphClkInit);
+
+void HAL_RCCEx_GetPeriphCLKConfig(RCC_PeriphCLKInitTypeDef *PeriphClkInit);
+
+uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk);
 
 /**
   * @}
@@ -2434,7 +2432,8 @@ uint32_t          HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk);
   */
 #if defined(RCC_PLLSAI1_SUPPORT)
 
-HAL_StatusTypeDef HAL_RCCEx_EnablePLLSAI1(RCC_PLLSAI1InitTypeDef  *PLLSAI1Init);
+HAL_StatusTypeDef HAL_RCCEx_EnablePLLSAI1(RCC_PLLSAI1InitTypeDef *PLLSAI1Init);
+
 HAL_StatusTypeDef HAL_RCCEx_DisablePLLSAI1(void);
 
 #endif /* RCC_PLLSAI1_SUPPORT */
@@ -2446,17 +2445,28 @@ HAL_StatusTypeDef HAL_RCCEx_DisablePLLSAI2(void);
 
 #endif /* RCC_PLLSAI2_SUPPORT */
 
-void              HAL_RCCEx_WakeUpStopCLKConfig(uint32_t WakeUpClk);
-void              HAL_RCCEx_StandbyMSIRangeConfig(uint32_t MSIRange);
-void              HAL_RCCEx_EnableLSECSS(void);
-void              HAL_RCCEx_DisableLSECSS(void);
-void              HAL_RCCEx_EnableLSECSS_IT(void);
-void              HAL_RCCEx_LSECSS_IRQHandler(void);
-void              HAL_RCCEx_LSECSS_Callback(void);
-void              HAL_RCCEx_EnableLSCO(uint32_t LSCOSource);
-void              HAL_RCCEx_DisableLSCO(void);
-void              HAL_RCCEx_EnableMSIPLLMode(void);
-void              HAL_RCCEx_DisableMSIPLLMode(void);
+void HAL_RCCEx_WakeUpStopCLKConfig(uint32_t WakeUpClk);
+
+void HAL_RCCEx_StandbyMSIRangeConfig(uint32_t MSIRange);
+
+void HAL_RCCEx_EnableLSECSS(void);
+
+void HAL_RCCEx_DisableLSECSS(void);
+
+void HAL_RCCEx_EnableLSECSS_IT(void);
+
+void HAL_RCCEx_LSECSS_IRQHandler(void);
+
+void HAL_RCCEx_LSECSS_Callback(void);
+
+void HAL_RCCEx_EnableLSCO(uint32_t LSCOSource);
+
+void HAL_RCCEx_DisableLSCO(void);
+
+void HAL_RCCEx_EnableMSIPLLMode(void);
+
+void HAL_RCCEx_DisableMSIPLLMode(void);
+
 #if defined (OCTOSPI1) && defined (OCTOSPI2)
 void              HAL_RCCEx_OCTOSPIDelayConfig(uint32_t Delay1, uint32_t Delay2);
 #endif /* OCTOSPI1 && OCTOSPI2 */
@@ -2471,15 +2481,23 @@ void              HAL_RCCEx_OCTOSPIDelayConfig(uint32_t Delay1, uint32_t Delay2)
   * @{
   */
 
-void              HAL_RCCEx_CRSConfig(RCC_CRSInitTypeDef *pInit);
-void              HAL_RCCEx_CRSSoftwareSynchronizationGenerate(void);
-void              HAL_RCCEx_CRSGetSynchronizationInfo(RCC_CRSSynchroInfoTypeDef *pSynchroInfo);
-uint32_t          HAL_RCCEx_CRSWaitSynchronization(uint32_t Timeout);
-void              HAL_RCCEx_CRS_IRQHandler(void);
-void              HAL_RCCEx_CRS_SyncOkCallback(void);
-void              HAL_RCCEx_CRS_SyncWarnCallback(void);
-void              HAL_RCCEx_CRS_ExpectedSyncCallback(void);
-void              HAL_RCCEx_CRS_ErrorCallback(uint32_t Error);
+void HAL_RCCEx_CRSConfig(RCC_CRSInitTypeDef *pInit);
+
+void HAL_RCCEx_CRSSoftwareSynchronizationGenerate(void);
+
+void HAL_RCCEx_CRSGetSynchronizationInfo(RCC_CRSSynchroInfoTypeDef *pSynchroInfo);
+
+uint32_t HAL_RCCEx_CRSWaitSynchronization(uint32_t Timeout);
+
+void HAL_RCCEx_CRS_IRQHandler(void);
+
+void HAL_RCCEx_CRS_SyncOkCallback(void);
+
+void HAL_RCCEx_CRS_SyncWarnCallback(void);
+
+void HAL_RCCEx_CRS_ExpectedSyncCallback(void);
+
+void HAL_RCCEx_CRS_ErrorCallback(uint32_t Error);
 
 /**
   * @}

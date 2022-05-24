@@ -21,7 +21,7 @@
 #define STM32L4xx_HAL_GPIO_EX_H
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/

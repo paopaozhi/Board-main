@@ -20,7 +20,7 @@
 #define STM32L4xx_HAL_FLASH_H
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -42,40 +42,38 @@
 /**
   * @brief  FLASH Erase structure definition
   */
-typedef struct
-{
-  uint32_t TypeErase;   /*!< Mass erase or page erase.
+typedef struct {
+    uint32_t TypeErase;   /*!< Mass erase or page erase.
                              This parameter can be a value of @ref FLASH_Type_Erase */
-  uint32_t Banks;       /*!< Select bank to erase.
+    uint32_t Banks;       /*!< Select bank to erase.
                              This parameter must be a value of @ref FLASH_Banks
                              (FLASH_BANK_BOTH should be used only for mass erase) */
-  uint32_t Page;        /*!< Initial Flash page to erase when page erase is disabled
+    uint32_t Page;        /*!< Initial Flash page to erase when page erase is disabled
                              This parameter must be a value between 0 and (max number of pages in the bank - 1)
                              (eg : 255 for 1MB dual bank) */
-  uint32_t NbPages;     /*!< Number of pages to be erased.
+    uint32_t NbPages;     /*!< Number of pages to be erased.
                              This parameter must be a value between 1 and (max number of pages in the bank - value of initial page)*/
 } FLASH_EraseInitTypeDef;
 
 /**
   * @brief  FLASH Option Bytes Program structure definition
   */
-typedef struct
-{
-  uint32_t OptionType;     /*!< Option byte to be configured.
+typedef struct {
+    uint32_t OptionType;     /*!< Option byte to be configured.
                                 This parameter can be a combination of the values of @ref FLASH_OB_Type */
-  uint32_t WRPArea;        /*!< Write protection area to be programmed (used for OPTIONBYTE_WRP).
+    uint32_t WRPArea;        /*!< Write protection area to be programmed (used for OPTIONBYTE_WRP).
                                 Only one WRP area could be programmed at the same time.
                                 This parameter can be value of @ref FLASH_OB_WRP_Area */
-  uint32_t WRPStartOffset; /*!< Write protection start offset (used for OPTIONBYTE_WRP).
+    uint32_t WRPStartOffset; /*!< Write protection start offset (used for OPTIONBYTE_WRP).
                                 This parameter must be a value between 0 and (max number of pages in the bank - 1)
                                 (eg : 25 for 1MB dual bank) */
-  uint32_t WRPEndOffset;   /*!< Write protection end offset (used for OPTIONBYTE_WRP).
+    uint32_t WRPEndOffset;   /*!< Write protection end offset (used for OPTIONBYTE_WRP).
                                 This parameter must be a value between WRPStartOffset and (max number of pages in the bank - 1) */
-  uint32_t RDPLevel;       /*!< Set the read protection level.. (used for OPTIONBYTE_RDP).
+    uint32_t RDPLevel;       /*!< Set the read protection level.. (used for OPTIONBYTE_RDP).
                                 This parameter can be a value of @ref FLASH_OB_Read_Protection */
-  uint32_t USERType;       /*!< User option byte(s) to be configured (used for OPTIONBYTE_USER).
+    uint32_t USERType;       /*!< User option byte(s) to be configured (used for OPTIONBYTE_USER).
                                 This parameter can be a combination of @ref FLASH_OB_USER_Type */
-  uint32_t USERConfig;     /*!< Value of the user option byte (used for OPTIONBYTE_USER).
+    uint32_t USERConfig;     /*!< Value of the user option byte (used for OPTIONBYTE_USER).
                                 This parameter can be a combination of @ref FLASH_OB_USER_BOR_LEVEL,
                                 @ref FLASH_OB_USER_nRST_STOP, @ref FLASH_OB_USER_nRST_STANDBY,
                                 @ref FLASH_OB_USER_nRST_SHUTDOWN, @ref FLASH_OB_USER_IWDG_SW,
@@ -83,53 +81,50 @@ typedef struct
                                 @ref FLASH_OB_USER_WWDG_SW, @ref FLASH_OB_USER_BFB2,
                                 @ref FLASH_OB_USER_DUALBANK, @ref FLASH_OB_USER_nBOOT1,
                                 @ref FLASH_OB_USER_SRAM2_PE and @ref FLASH_OB_USER_SRAM2_RST */
-  uint32_t PCROPConfig;    /*!< Configuration of the PCROP (used for OPTIONBYTE_PCROP).
+    uint32_t PCROPConfig;    /*!< Configuration of the PCROP (used for OPTIONBYTE_PCROP).
                                 This parameter must be a combination of @ref FLASH_Banks (except FLASH_BANK_BOTH)
                                 and @ref FLASH_OB_PCROP_RDP */
-  uint32_t PCROPStartAddr; /*!< PCROP Start address (used for OPTIONBYTE_PCROP).
+    uint32_t PCROPStartAddr; /*!< PCROP Start address (used for OPTIONBYTE_PCROP).
                                 This parameter must be a value between begin and end of bank
                                 => Be careful of the bank swapping for the address */
-  uint32_t PCROPEndAddr;   /*!< PCROP End address (used for OPTIONBYTE_PCROP).
+    uint32_t PCROPEndAddr;   /*!< PCROP End address (used for OPTIONBYTE_PCROP).
                                 This parameter must be a value between PCROP Start address and end of bank */
 } FLASH_OBProgramInitTypeDef;
 
 /**
   * @brief  FLASH Procedure structure definition
   */
-typedef enum
-{
-  FLASH_PROC_NONE = 0,
-  FLASH_PROC_PAGE_ERASE,
-  FLASH_PROC_MASS_ERASE,
-  FLASH_PROC_PROGRAM,
-  FLASH_PROC_PROGRAM_LAST
+typedef enum {
+    FLASH_PROC_NONE = 0,
+    FLASH_PROC_PAGE_ERASE,
+    FLASH_PROC_MASS_ERASE,
+    FLASH_PROC_PROGRAM,
+    FLASH_PROC_PROGRAM_LAST
 } FLASH_ProcedureTypeDef;
 
 /**
   * @brief  FLASH Cache structure definition
   */
-typedef enum
-{
-  FLASH_CACHE_DISABLED = 0,
-  FLASH_CACHE_ICACHE_ENABLED,
-  FLASH_CACHE_DCACHE_ENABLED,
-  FLASH_CACHE_ICACHE_DCACHE_ENABLED
+typedef enum {
+    FLASH_CACHE_DISABLED = 0,
+    FLASH_CACHE_ICACHE_ENABLED,
+    FLASH_CACHE_DCACHE_ENABLED,
+    FLASH_CACHE_ICACHE_DCACHE_ENABLED
 } FLASH_CacheTypeDef;
 
 /**
   * @brief  FLASH handle Structure definition
   */
-typedef struct
-{
-  HAL_LockTypeDef             Lock;              /* FLASH locking object */
-  __IO uint32_t               ErrorCode;         /* FLASH error code */
-  __IO FLASH_ProcedureTypeDef ProcedureOnGoing;  /* Internal variable to indicate which procedure is ongoing or not in IT context */
-  __IO uint32_t               Address;           /* Internal variable to save address selected for program in IT context */
-  __IO uint32_t               Bank;              /* Internal variable to save current bank selected during erase in IT context */
-  __IO uint32_t               Page;              /* Internal variable to define the current page which is erasing in IT context */
-  __IO uint32_t               NbPagesToErase;    /* Internal variable to save the remaining pages to erase in IT context */
-  __IO FLASH_CacheTypeDef     CacheToReactivate; /* Internal variable to indicate which caches should be reactivated */
-}FLASH_ProcessTypeDef;
+typedef struct {
+    HAL_LockTypeDef Lock;              /* FLASH locking object */
+    __IO uint32_t ErrorCode;         /* FLASH error code */
+    __IO FLASH_ProcedureTypeDef ProcedureOnGoing;  /* Internal variable to indicate which procedure is ongoing or not in IT context */
+    __IO uint32_t Address;           /* Internal variable to save address selected for program in IT context */
+    __IO uint32_t Bank;              /* Internal variable to save current bank selected during erase in IT context */
+    __IO uint32_t Page;              /* Internal variable to define the current page which is erasing in IT context */
+    __IO uint32_t NbPagesToErase;    /* Internal variable to save the remaining pages to erase in IT context */
+    __IO FLASH_CacheTypeDef CacheToReactivate; /* Internal variable to indicate which caches should be reactivated */
+} FLASH_ProcessTypeDef;
 
 /**
   * @}
@@ -779,13 +774,17 @@ typedef struct
 /** @addtogroup FLASH_Exported_Functions_Group1
   * @{
   */
-HAL_StatusTypeDef  HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint64_t Data);
-HAL_StatusTypeDef  HAL_FLASH_Program_IT(uint32_t TypeProgram, uint32_t Address, uint64_t Data);
+HAL_StatusTypeDef HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint64_t Data);
+
+HAL_StatusTypeDef HAL_FLASH_Program_IT(uint32_t TypeProgram, uint32_t Address, uint64_t Data);
+
 /* FLASH IRQ handler method */
-void               HAL_FLASH_IRQHandler(void);
+void HAL_FLASH_IRQHandler(void);
+
 /* Callbacks in non blocking modes */
-void               HAL_FLASH_EndOfOperationCallback(uint32_t ReturnValue);
-void               HAL_FLASH_OperationErrorCallback(uint32_t ReturnValue);
+void HAL_FLASH_EndOfOperationCallback(uint32_t ReturnValue);
+
+void HAL_FLASH_OperationErrorCallback(uint32_t ReturnValue);
 /**
   * @}
   */
@@ -794,12 +793,16 @@ void               HAL_FLASH_OperationErrorCallback(uint32_t ReturnValue);
 /** @addtogroup FLASH_Exported_Functions_Group2
   * @{
   */
-HAL_StatusTypeDef  HAL_FLASH_Unlock(void);
-HAL_StatusTypeDef  HAL_FLASH_Lock(void);
+HAL_StatusTypeDef HAL_FLASH_Unlock(void);
+
+HAL_StatusTypeDef HAL_FLASH_Lock(void);
+
 /* Option bytes control */
-HAL_StatusTypeDef  HAL_FLASH_OB_Unlock(void);
-HAL_StatusTypeDef  HAL_FLASH_OB_Lock(void);
-HAL_StatusTypeDef  HAL_FLASH_OB_Launch(void);
+HAL_StatusTypeDef HAL_FLASH_OB_Unlock(void);
+
+HAL_StatusTypeDef HAL_FLASH_OB_Lock(void);
+
+HAL_StatusTypeDef HAL_FLASH_OB_Launch(void);
 /**
   * @}
   */

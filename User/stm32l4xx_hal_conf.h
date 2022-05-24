@@ -457,7 +457,9 @@ extern "C" {
 #endif /* HAL_SWPMI_MODULE_ENABLED */
 
 #ifdef HAL_TIM_MODULE_ENABLED
+
 #include "stm32l4xx_hal_tim.h"
+
 #endif /* HAL_TIM_MODULE_ENABLED */
 
 #ifdef HAL_TSC_MODULE_ENABLED
@@ -465,7 +467,9 @@ extern "C" {
 #endif /* HAL_TSC_MODULE_ENABLED */
 
 #ifdef HAL_UART_MODULE_ENABLED
+
 #include "stm32l4xx_hal_uart.h"
+
 #endif /* HAL_UART_MODULE_ENABLED */
 
 #ifdef HAL_USART_MODULE_ENABLED

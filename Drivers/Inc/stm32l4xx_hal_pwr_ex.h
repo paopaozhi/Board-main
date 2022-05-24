@@ -21,7 +21,7 @@
 #define STM32L4xx_HAL_PWR_EX_H
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -46,9 +46,8 @@
 /**
   * @brief  PWR PVM configuration structure definition
   */
-typedef struct
-{
-  uint32_t PVMType;   /*!< PVMType: Specifies which voltage is monitored and against which threshold.
+typedef struct {
+    uint32_t PVMType;   /*!< PVMType: Specifies which voltage is monitored and against which threshold.
                            This parameter can be a value of @ref PWREx_PVM_Type.
                            @arg @ref PWR_PVM_1 Peripheral Voltage Monitoring 1 enable: VDDUSB versus 1.2 V (applicable when USB feature is supported).
 @if STM32L486xx
@@ -57,9 +56,9 @@ typedef struct
                            @arg @ref PWR_PVM_3 Peripheral Voltage Monitoring 3 enable: VDDA versus 1.62 V.
                            @arg @ref PWR_PVM_4 Peripheral Voltage Monitoring 4 enable: VDDA versus 2.2 V. */
 
-  uint32_t Mode;      /*!< Mode: Specifies the operating mode for the selected pins.
+    uint32_t Mode;      /*!< Mode: Specifies the operating mode for the selected pins.
                            This parameter can be a value of @ref PWREx_PVM_Mode. */
-}PWR_PVMTypeDef;
+} PWR_PVMTypeDef;
 
 /**
   * @}
@@ -284,7 +283,7 @@ typedef struct
 /** @defgroup PWREx_SRAM2_Retention PWR SRAM2 Retention in Standby mode
   * @{
   */
-#define PWR_NO_SRAM2_RETENTION         ((uint32_t)0x00000000)  /*!< SRAM2 is powered off in Standby mode (SRAM2 content is lost) */  
+#define PWR_NO_SRAM2_RETENTION         ((uint32_t)0x00000000)  /*!< SRAM2 is powered off in Standby mode (SRAM2 content is lost) */
 #if defined(PWR_CR3_RRS_1)
 #define PWR_FULL_SRAM2_RETENTION       PWR_CR3_RRS_0      /*!< Full SRAM2 is powered by the low-power regulator in Standby mode */
 #define PWR_4KBYTES_SRAM2_RETENTION    PWR_CR3_RRS_1      /*!< Only 4 Kbytes of SRAM2 is powered by the low-power regulator in Standby mode */
@@ -718,8 +717,8 @@ typedef struct
                                 ((PIN) == PWR_WAKEUP_PIN5_LOW))
 
 #if defined (STM32L475xx) || defined (STM32L476xx) || defined (STM32L485xx) || defined (STM32L486xx) || \
-    defined (STM32L496xx) || defined (STM32L4A6xx)                                                   || \
-    defined (STM32L4P5xx) || defined (STM32L4Q5xx)                                                   || \
+    defined (STM32L496xx) || defined (STM32L4A6xx) || \
+    defined (STM32L4P5xx) || defined (STM32L4Q5xx) || \
     defined (STM32L4R5xx) || defined (STM32L4R7xx) || defined (STM32L4R9xx) || defined (STM32L4S5xx) || defined (STM32L4S7xx) || defined (STM32L4S9xx)
 #define IS_PWR_PVM_TYPE(TYPE) (((TYPE) == PWR_PVM_1) ||\
                                ((TYPE) == PWR_PVM_2) ||\
@@ -834,9 +833,13 @@ typedef struct
 
 /* Peripheral Control functions  **********************************************/
 uint32_t HAL_PWREx_GetVoltageRange(void);
+
 HAL_StatusTypeDef HAL_PWREx_ControlVoltageScaling(uint32_t VoltageScaling);
+
 void HAL_PWREx_EnableBatteryCharging(uint32_t ResistorSelection);
+
 void HAL_PWREx_DisableBatteryCharging(void);
+
 #if defined(PWR_CR2_USV)
 void HAL_PWREx_EnableVddUSB(void);
 void HAL_PWREx_DisableVddUSB(void);
@@ -845,17 +848,29 @@ void HAL_PWREx_DisableVddUSB(void);
 void HAL_PWREx_EnableVddIO2(void);
 void HAL_PWREx_DisableVddIO2(void);
 #endif /* PWR_CR2_IOSV */
+
 void HAL_PWREx_EnableInternalWakeUpLine(void);
+
 void HAL_PWREx_DisableInternalWakeUpLine(void);
+
 HAL_StatusTypeDef HAL_PWREx_EnableGPIOPullUp(uint32_t GPIO, uint32_t GPIONumber);
+
 HAL_StatusTypeDef HAL_PWREx_DisableGPIOPullUp(uint32_t GPIO, uint32_t GPIONumber);
+
 HAL_StatusTypeDef HAL_PWREx_EnableGPIOPullDown(uint32_t GPIO, uint32_t GPIONumber);
+
 HAL_StatusTypeDef HAL_PWREx_DisableGPIOPullDown(uint32_t GPIO, uint32_t GPIONumber);
+
 void HAL_PWREx_EnablePullUpPullDownConfig(void);
+
 void HAL_PWREx_DisablePullUpPullDownConfig(void);
+
 void HAL_PWREx_EnableSRAM2ContentRetention(void);
+
 void HAL_PWREx_DisableSRAM2ContentRetention(void);
+
 HAL_StatusTypeDef HAL_PWREx_SetSRAM2ContentRetention(uint32_t SRAM2Size);
+
 #if defined(PWR_CR1_RRSTP)
 void HAL_PWREx_EnableSRAM3ContentRetention(void);
 void HAL_PWREx_DisableSRAM3ContentRetention(void);
@@ -872,11 +887,17 @@ void HAL_PWREx_DisablePVM1(void);
 void HAL_PWREx_EnablePVM2(void);
 void HAL_PWREx_DisablePVM2(void);
 #endif /* PWR_CR2_PVME2 */
+
 void HAL_PWREx_EnablePVM3(void);
+
 void HAL_PWREx_DisablePVM3(void);
+
 void HAL_PWREx_EnablePVM4(void);
+
 void HAL_PWREx_DisablePVM4(void);
+
 HAL_StatusTypeDef HAL_PWREx_ConfigPVM(PWR_PVMTypeDef *sConfigPVM);
+
 #if defined(PWR_CR3_ENULP)
 void HAL_PWREx_EnableBORPVD_ULP(void);
 void HAL_PWREx_DisableBORPVD_ULP(void);
@@ -889,20 +910,28 @@ void HAL_PWREx_DisableExtSMPS_0V95(void);
 
 /* Low Power modes configuration functions ************************************/
 void HAL_PWREx_EnableLowPowerRunMode(void);
+
 HAL_StatusTypeDef HAL_PWREx_DisableLowPowerRunMode(void);
+
 void HAL_PWREx_EnterSTOP0Mode(uint8_t STOPEntry);
+
 void HAL_PWREx_EnterSTOP1Mode(uint8_t STOPEntry);
+
 void HAL_PWREx_EnterSTOP2Mode(uint8_t STOPEntry);
+
 void HAL_PWREx_EnterSHUTDOWNMode(void);
 
 void HAL_PWREx_PVD_PVM_IRQHandler(void);
+
 #if defined(PWR_CR2_PVME1)
 void HAL_PWREx_PVM1Callback(void);
 #endif /* PWR_CR2_PVME1 */
 #if defined(PWR_CR2_PVME2)
 void HAL_PWREx_PVM2Callback(void);
 #endif /* PWR_CR2_PVME2 */
+
 void HAL_PWREx_PVM3Callback(void);
+
 void HAL_PWREx_PVM4Callback(void);
 
 /**

@@ -102,6 +102,7 @@ extern "C" {
   */
 /* Peripheral Control functions  ************************************************/
 HAL_StatusTypeDef HAL_I2CEx_ConfigAnalogFilter(I2C_HandleTypeDef *hi2c, uint32_t AnalogFilter);
+
 HAL_StatusTypeDef HAL_I2CEx_ConfigDigitalFilter(I2C_HandleTypeDef *hi2c, uint32_t DigitalFilter);
 /**
   * @}
@@ -111,6 +112,7 @@ HAL_StatusTypeDef HAL_I2CEx_ConfigDigitalFilter(I2C_HandleTypeDef *hi2c, uint32_
   * @{
   */
 HAL_StatusTypeDef HAL_I2CEx_EnableWakeUp(I2C_HandleTypeDef *hi2c);
+
 HAL_StatusTypeDef HAL_I2CEx_DisableWakeUp(I2C_HandleTypeDef *hi2c);
 /**
   * @}
@@ -120,6 +122,7 @@ HAL_StatusTypeDef HAL_I2CEx_DisableWakeUp(I2C_HandleTypeDef *hi2c);
   * @{
   */
 void HAL_I2CEx_EnableFastModePlus(uint32_t ConfigFastModePlus);
+
 void HAL_I2CEx_DisableFastModePlus(uint32_t ConfigFastModePlus);
 /**
   * @}
