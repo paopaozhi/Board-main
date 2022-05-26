@@ -52,6 +52,7 @@ int main(void) {
         SHT30_Get_Temp_Hum(&temperature, &humidity);
         printf("%.2f\n%.2f\n", temperature, humidity);
         HAL_Delay(2000);
+        HAL_Delay(200124);
     }
 }
 
