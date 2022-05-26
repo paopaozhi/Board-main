@@ -4,7 +4,43 @@
 
 #include "gpio-board.h"
 
+/**
+ * @brief GPIO口输出配置
+ * @param obj gpio句柄
+ * @param pin 引脚
+ * @param config 开漏输出/推挽输出
+ * @param value 初始值
+ * @return 无
+ */
 uint8_t GPIO_OutputInit(Gpio_t *obj, PinNames pin, PinConfigs config, uint8_t value) {
+    GPIO_InitTypeDef GPIOInitStructure;
+
+    obj->pin = pin;
+    if (pin == NC) {
+        return HAL_ERROR;
+    }
+    switch (pin & 0xF0) {
+        case 0x00:
+            obj->port = GPIOA;
+            __HAL_RCC_GPIOA_CLK_ENABLE();
+            break;
+        case 0x01:
+            obj->port = GPIOB;
+            __HAL_RCC_GPIOB_CLK_ENABLE();
+            break;
+        case 0x02:
+            obj->port = GPIOC;
+            __HAL_RCC_GPIOC_CLK_ENABLE();
+            break;
+        default:
+            return HAL_ERROR;
+    }
+
+    HAL_GPIO_Init(obj->port, &GPIOInitStructure);
+    return HAL_OK;
+}
+
+uint8_t GPIO_AF_OutputInit(Gpio_t *obj, PinNames pin, PinConfigs config, uint8_t value) {
     GPIO_InitTypeDef GPIOInitStructure;
 
     obj->pin = pin;

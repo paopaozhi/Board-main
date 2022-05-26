@@ -17,7 +17,7 @@ char Uart1_Txbuf[128];
 float temperature = 0.0;
 float humidity = 0.0;
 uint16_t light = 0;
-uint8_t dat[2] = {0};
+//uint8_t dat[2] = {0};
 
 void SystemClock_Config(void);
 

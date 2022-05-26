@@ -19,7 +19,7 @@
  * GPIO 引脚名
  */
 typedef enum {
-    MCU_PINS ,
+    MCU_PINS,
     // Not connected
     NC = (int) 0xFFFFFFFF
 } PinNames;
@@ -61,7 +61,6 @@ typedef struct {
     uint16_t portIndex;
     PinTypes pull;
 } Gpio_t;
-
 
 
 #endif //GPIO_BOARD_H
