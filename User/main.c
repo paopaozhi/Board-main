@@ -51,12 +51,6 @@ int main(void) {
         printf("%d\r\n", BH1750_GetLux());
         SHT30_Get_Temp_Hum(&temperature, &humidity);
         printf("%.2f\n%.2f\n", temperature, humidity);
-<<<<<<< HEAD
-        HAL_Delay(8000);
-=======
-        HAL_Delay(2000);
-        HAL_Delay(200124);
->>>>>>> develop
     }
 }
 
