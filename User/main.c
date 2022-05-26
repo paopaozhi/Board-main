@@ -51,8 +51,7 @@ int main(void) {
         printf("%d\r\n", BH1750_GetLux());
         SHT30_Get_Temp_Hum(&temperature, &humidity);
         printf("%.2f\n%.2f\n", temperature, humidity);
-        HAL_Delay(2000);
-        HAL_Delay(200124);
+        HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_13);
     }
 }
 
