@@ -43,7 +43,7 @@ typedef enum {
 } PinConfigs;
 
 /**
- * GPIO 上拉 下拉 不上拉不下拉
+ * GPIO 上拉 下拉 浮空
  */
 typedef enum {
     PIN_NO_PULL = 0,
@@ -52,12 +52,12 @@ typedef enum {
 } PinTypes;
 
 /*!
- * GPIO 句柄
+ * GPIO对象
  */
 typedef struct {
     PinNames pin;
-    uint16_t pinIndex;
     void *port;
+    uint16_t pinIndex;
     uint16_t portIndex;
     PinTypes pull;
 } Gpio_t;
